@@ -30,7 +30,6 @@ export const addProduct = (form) => {
     const name = form.get("name");
     const price = form.get("price");
     const skuCode = form.get("skuCode");
-    const quantity = form.get("quantity");
     const S_size = form.get("S_quantity");
     const M_size = form.get("M_quantity");
     const X_size = form.get("X_quantity");
@@ -39,14 +38,14 @@ export const addProduct = (form) => {
     const X3L_size = form.get("X3L_quantity");
     const description = form.get("description");
     const color = form.get("color").split(",");
-    console.log("this is color");
-    console.log(color);
     const category = form.get("category");
+    console.log("this is category");
+    console.log(category);
+
     let productPictures;
     try {
       const res = await axios.post(`/uploads/images`, form);
       productPictures = res.data.arr;
-      console.log(productPictures);
     } catch (err) {
       console.log(err);
     }
@@ -56,7 +55,6 @@ export const addProduct = (form) => {
           name,
           price,
           skuCode,
-          quantity,
           S_size,
           M_size,
           X_size,
@@ -69,6 +67,8 @@ export const addProduct = (form) => {
           productPictures,
         },
       };
+
+      console.log(obj, "object to send");
 
       const res = await axios.post(`/product/create`, obj);
       if (res.status === 200) {

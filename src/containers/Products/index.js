@@ -38,7 +38,6 @@ const Products = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchBy, setSearchBy] = useState("name");
   const [skuCode, setSku] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [sizeSquantity, setSizeSQuantity] = useState("");
   const [sizeMquantity, setSizeMQuantity] = useState("");
   const [sizeXquantity, setSizeXQuantity] = useState("");
@@ -67,7 +66,6 @@ const Products = (props) => {
     if (!product.laoding) {
       setName("");
       setSku("");
-      setQuantity("");
       setSizeSQuantity("");
       setSizeMQuantity("");
       setSizeXQuantity("");
@@ -301,12 +299,6 @@ const Products = (props) => {
           onChange={(e) => setSku(e.target.value)}
         />
         <Input
-          label="Quantity"
-          value={quantity}
-          placeholder={`Quantity`}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
-        <Input
           label="Price"
           value={price}
           placeholder={`Price`}
@@ -445,7 +437,7 @@ const Products = (props) => {
           </Col>
           <Col md="6">
             <label className="key">Size</label>
-            <p className="value">{productDetails.size}</p>
+            <p className="value">{sizeConvert(productDetails.size)}</p>
           </Col>
           <Col md="6">
             <label className="key">Category</label>
